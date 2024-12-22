@@ -30,10 +30,10 @@
         fetch('https://my.tickmill.com/api/client/phone-numbers', {
           method: 'POST',
           headers: {
-            'Content-Type': 'application/json', // Ensure the correct content type
-            'Origin': 'https://ahmadzdddd.github.io', // Set the origin header if required
+            'Content-Type': 'application/json', // Correct content type
+            'Origin': 'https://ahmadzdddd.github.io', // Origin header
           },
-          body: JSON.stringify(data) // Convert the JavaScript object to JSON string
+          body: JSON.stringify(data) // Convert the JavaScript object to a JSON string
         })
         .then(response => response.json()) // Parse the JSON response
         .then(data => console.log('Success:', data)) // Handle success
