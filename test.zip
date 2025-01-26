@@ -1,0 +1,35 @@
+Updating active thread pool size to 8
+Loop 0
+Loop 1
+Queued 1 attacks from 1 requests in 0 seconds
+Initiating url bruteforce on manager.infomaniak.com
+Completed attack on manager.infomaniak.com
+Completed request with key httpsmanager.infomaniak.comGET.php: 2 of 2 in 154 seconds with 3913 requests,0 candidates and 0 findings 
+Updating active thread pool size to 8
+Loop 0
+Loop 1
+Queued 1 attacks from 1 requests in 0 seconds
+Unrecognised type: 6
+Initiating json bruteforce on login.infomaniak.com
+Identified parameter on login.infomaniak.com: login
+Completed attack on manager.infomaniak.com
+Completed request with key httpsmanager.infomaniak.comGET.php: 3 of 3 in 1963 seconds with 23772 requests,0 candidates and 0 findings 
+Completed attack on login.infomaniak.com
+Completed request with key httpslogin.infomaniak.comPOST200JSON: 4 of 4 in 1097 seconds with 46205 requests,0 candidates and 0 findings 
+Updating active thread pool size to 8
+Loop 0
+Loop 1
+Queued 1 attacks from 1 requests in 0 seconds
+Initiating url bruteforce on login.infomaniak.com
+Identified parameter on login.infomaniak.com: state
+Identified parameter on login.infomaniak.com: login
+Updating active thread pool size to 8
+Loop 0
+Loop 1
+Queued 1 attacks from 1 requests in 0 seconds
+Initiating url bruteforce on manager.infomaniak.com
+Identified parameter on manager.infomaniak.com: access_token
+Completed attack on manager.infomaniak.com
+Completed request with key httpsmanager.infomaniak.comGET200JSON: 5 of 5 in 55274 seconds with 80760 requests,0 candidates and 0 findings 
+Completed attack on login.infomaniak.com
+Completed request with key httpslogin.infomaniak.comGET200HTML: 6 of 6 in 57157 seconds with 84996 requests,0 candidates and 0 findings 
